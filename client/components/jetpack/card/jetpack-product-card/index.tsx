@@ -44,6 +44,9 @@ type OwnProps = {
 	showAbovePriceText?: boolean;
 	scrollCardIntoView?: ScrollCardIntoViewCallback;
 	collapseFeaturesOnMobile?: boolean;
+	isPricingPageTreatment202204?: boolean;
+	isPricingPageTest202204Loading?: boolean;
+	belowButtonText?: string;
 };
 
 type HeaderLevel = 1 | 2 | 3 | 4 | 5 | 6;
@@ -83,6 +86,9 @@ const JetpackProductCard: React.FC< OwnProps > = ( {
 	aboveButtonText = null,
 	scrollCardIntoView,
 	collapseFeaturesOnMobile,
+	isPricingPageTreatment202204,
+	isPricingPageTest202204Loading,
+	belowButtonText,
 } ) => {
 	const isFree = item.isFree;
 
@@ -126,6 +132,7 @@ const JetpackProductCard: React.FC< OwnProps > = ( {
 				'is-deprecated': isDeprecated,
 				'is-aligned': isAligned,
 				'is-featured': isFeatured,
+				'jetpack-discount-price-focused': isPricingPageTreatment202204,
 			} ) }
 			data-e2e-product-slug={ item.productSlug }
 		>
@@ -172,6 +179,8 @@ const JetpackProductCard: React.FC< OwnProps > = ( {
 						tooltipText={ tooltipText }
 						productName={ item.displayName }
 						hideSavingLabel={ hideSavingLabel }
+						isPricingPageTreatment202204={ isPricingPageTreatment202204 }
+						isPricingPageTest202204Loading={ isPricingPageTest202204Loading }
 					/>
 				) }
 
@@ -202,6 +211,9 @@ const JetpackProductCard: React.FC< OwnProps > = ( {
 					>
 						{ buttonLabel }
 					</Button>
+				) }
+				{ belowButtonText && (
+					<p className="jetpack-product-card__below-button">{ belowButtonText }</p>
 				) }
 
 				{ description && <p className="jetpack-product-card__description">{ description }</p> }
