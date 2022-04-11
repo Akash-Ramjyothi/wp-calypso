@@ -10,6 +10,7 @@ export { default as vertical } from './site-vertical';
 export type StepPath =
 	| 'courses'
 	| 'intent'
+	| 'podcastTitle'
 	| 'options'
 	| 'bloggerStartingPoint'
 	| 'storeFeatures'
