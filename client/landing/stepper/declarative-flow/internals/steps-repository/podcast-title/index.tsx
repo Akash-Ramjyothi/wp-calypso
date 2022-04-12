@@ -18,12 +18,16 @@ interface Props {
 }
 
 const PodcastTitleStep: Step = function PodcastTitleStep( { navigation } ) {
-	const { goBack, goNext } = navigation;
+	const { goBack, submit } = navigation;
 	const translate = useTranslate();
+  
+  const handleSubmit = () => {
+		submit?.();
+	};
 
 	const PodcastTitleForm: React.FC< Props > = ( { podcastTitle } ) => {
 		return (
-			<form className="podcast-title__form" onSubmit={ goNext }>
+			<form className="podcast-title__form" onSubmit={ handleSubmit }>
 				<div className="podcast-title__input-wrapper">
 					<FormLabel htmlFor="podcast-title">{ translate( 'My podcast is called' ) }</FormLabel>
 					<div className="podcast-title__explanation">
